@@ -1,0 +1,1 @@
+{"version":3,"file":"secan.esm.js","sources":["../src/index.js"],"sourcesContent":["/* global DEBUG */\nconsole.log('todo');"],"names":["console","log"],"mappings":"AAAA;AACAA,OAAO,CAACC,GAAR,CAAY,MAAZ"}

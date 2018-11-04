@@ -1,0 +1,6 @@
+{
+  "identifiers":   true,
+  "literals":      true,
+  "color":         true,
+  "ignore":        "test|example|dist"
+}

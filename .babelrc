@@ -1,0 +1,14 @@
+{
+	"plugins": [
+		"array-includes"
+	],
+	"presets": [
+		[
+			"@babel/env",
+			{
+				"loose": true,
+				"modules": false
+			}
+		]
+	]
+}
