@@ -2,9 +2,8 @@
   "name": "secan",
   "version": "0.1.0",
   "description": "A frontend security checklist",
-  "main": "dist/secan.umd.js",
-  "module": "dist/secan.esm.js",
-  "browser": "dist/secan.umd.js",
+  "main": "dist/secan.ugly.js",
+  "browser": "dist/secan.ugly.js",
   "sideEffects": false,
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
@@ -12,7 +11,7 @@
     "build": "rollup -c",
     "prebuild": "rimraf dist",
     "build-dev": "rollup -c rollup.dev.js",
-    "start": "concurrently \"rollup -w -c rollup.dev.js\" \"pock\" \"opn http://127.0.0.1:8080\"",
+    "start": "concurrently \"rollup -w -c rollup.dev.js\" \"pock\" \"opn http://127.0.0.1:8080/demo.html\"",
     "lint": "eslint src",
     "format": "prettier --config .prettierrc.js --write src/**/*.js test/**/*.js",
     "inspect": "jsinspect src",
@@ -71,6 +70,7 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-javascript-obfuscator": "^1.0.1",
     "rollup-plugin-replace": "^2.1.0",
     "rollup-plugin-uglify": "^6.0.0"
   }

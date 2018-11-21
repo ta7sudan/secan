@@ -1,8 +1,10 @@
 import babel from 'rollup-plugin-babel';
 import replace from 'rollup-plugin-replace';
+// 这个暂时用不了, 有点bug
+// import obfuscatorPlugin from 'rollup-plugin-javascript-obfuscator';
 import { uglify } from 'rollup-plugin-uglify';
 import { relative } from 'path';
-import { browser, module, name, version, license, author, homepage } from './package.json';
+import { name, version, license, author, homepage } from './package.json';
 
 /**
  * 如果用babel-minify压缩的话, banner字符串的开头和结尾谜之不能换行
@@ -30,19 +32,12 @@ export default [
 		treeshake: {
 			propertyReadSideEffects: false
 		},
-		output: [
-			{
-				file: module,
-				format: 'esm',
-				sourcemap: true
-			},
-			{
-				name,
-				file: browser,
-				format: 'umd',
-				sourcemap: true
-			}
-		]
+		output: {
+			name,
+			file: 'dist/secan.umd.js',
+			format: 'umd',
+			sourcemap: true
+		}
 	},
 	{
 		input: 'src/index.js',

@@ -4,3 +4,6 @@ static:
 watch: true
 cors: true
 port: 8080
+# ssl:
+#   key: ./example/key.pem
+#   cert: ./example/cert.pem
