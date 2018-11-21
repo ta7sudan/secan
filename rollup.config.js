@@ -4,7 +4,7 @@ import replace from 'rollup-plugin-replace';
 // import obfuscatorPlugin from 'rollup-plugin-javascript-obfuscator';
 import { uglify } from 'rollup-plugin-uglify';
 import { relative } from 'path';
-import { name, version, license, author, homepage } from './package.json';
+import { browser, module, name, version, license, author, homepage } from './package.json';
 
 /**
  * 如果用babel-minify压缩的话, banner字符串的开头和结尾谜之不能换行
@@ -32,12 +32,19 @@ export default [
 		treeshake: {
 			propertyReadSideEffects: false
 		},
-		output: {
-			name,
-			file: 'dist/secan.umd.js',
-			format: 'umd',
-			sourcemap: true
-		}
+		output: [
+			{
+				file: module,
+				format: 'esm',
+				sourcemap: true
+			},
+			{
+				name,
+				file: browser,
+				format: 'umd',
+				sourcemap: true
+			}
+		]
 	},
 	{
 		input: 'src/index.js',
@@ -68,7 +75,7 @@ export default [
 			format: 'umd',
 			sourcemap: true,
 			// sourcemap生成之后在devtools本来看到的文件是src/index.js, 这个选项可以变成secan.js
-			sourcemapPathTransform: path => ~path.indexOf('index') ? 'secan.js' : relative('src', path)
+			sourcemapPathTransform: path => (~path.indexOf('index') ? 'secan.js' : relative('src', path))
 		}
 	}
 ];
