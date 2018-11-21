@@ -9,7 +9,6 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "prebuild": "rimraf dist",
     "build-dev": "rollup -c rollup.dev.js",
     "start": "concurrently \"rollup -w -c rollup.dev.js\" \"pock\" \"opn http://127.0.0.1:8080/demo.html\"",
     "lint": "eslint src",
