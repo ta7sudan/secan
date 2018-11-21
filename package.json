@@ -1,6 +1,6 @@
 {
   "name": "secan",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A frontend security checklist",
   "main": "dist/secan.ugly.js",
   "browser": "dist/secan.ugly.js",
