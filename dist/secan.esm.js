@@ -158,12 +158,14 @@ function hookFunc() {
 
   w[dict[40] + dict[57] + dict[36] + dict[47]] = function (args) {
     // emit('eval')
-    emit(dict[40] + dict[57] + dict[36] + dict[47], {
-      args: args
-    });
-    /* eslint-disable-next-line */
-
-    ave(args);
+    if (args[args.length - 1] !== '__secan__') {
+      emit(dict[40] + dict[57] + dict[36] + dict[47], {
+        args: args
+      });
+      w.ave(args);
+    } else {
+      w.ave.apply(w, args.slice(0, -1));
+    }
   }; // w.eval
 
 
@@ -175,10 +177,14 @@ function hookFunc() {
 
   w[dict[36] + dict[47] + dict[40] + dict[53] + dict[55]] = function (args) {
     // emit('alert')
-    emit(dict[36] + dict[47] + dict[40] + dict[53] + dict[55], {
-      args: args
-    });
-    alt(args);
+    if (args[args.length - 1] !== '__secan__') {
+      emit(dict[36] + dict[47] + dict[40] + dict[53] + dict[55], {
+        args: args
+      });
+      alt(args);
+    } else {
+      alt.apply(void 0, args.slice(0, -1));
+    }
   }; // w.alert
 
 
