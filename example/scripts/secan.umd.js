@@ -145,7 +145,7 @@
 	function wtf() {
 	  // 用字符串有利于混淆
 	  // window.eval('debugger')
-	  w[dict[40] + dict[57] + dict[36] + dict[47]](dict[39] + dict[40] + dict[37] + dict[56] + dict[42] + dict[42] + dict[40] + dict[53]);
+	  w[dict[40] + dict[57] + dict[36] + dict[47]](dict[39] + dict[40] + dict[37] + dict[56] + dict[42] + dict[42] + dict[40] + dict[53], '__secan__');
 	}
 
 	function loopDebugger() {
