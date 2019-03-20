@@ -33,6 +33,7 @@
 	    // 'Chrome
 	isChrome = ~w[tgn][au].indexOf(dict[12] + dict[43] + dict[53] + dict[50] + dict[48] + dict[40]) && !isEdge,
 	    log = w[glc].log,
+	    clr = w[glc].clear,
 	    has = Object.prototype.hasOwnProperty.bind(w);
 	var debuggerLoop = false,
 	    debuggerLoopRunning = false,
@@ -106,8 +107,8 @@
 	  // 'phantomjs'
 	  var reg0 = new RegExp(dict[51] + dict[43] + dict[36] + dict[49] + dict[55] + dict[50] + dict[48] + dict[45] + dict[54], 'i'),
 	      reg1 = new RegExp(dict[43] + dict[40] + dict[36] + dict[39] + dict[47] + dict[40] + dict[54] + dict[54] + dict[38] + dict[43] + dict[53] + dict[50] + dict[48] + dict[40], 'i'),
-	      isWechatOrQQ = function isWechatOrQQ() {
-	    return /micromessenger/i.test(w[tgn][au]) || /mqqbrowser/i.test(w[tgn][au]) || has('__wx') || has('xwebToNative') || has('tbsJs') || has('tbs_bridge') || has('onx5playend') || has('WeixinJSBridge');
+	      isWechatOrQQorUC = function isWechatOrQQorUC() {
+	    return /micromessenger/i.test(w[tgn][au]) || /mqqbrowser/i.test(w[tgn][au]) || /ucbrowser/i.test(w[tgn][au]) || has('__wx') || has('xwebToNative') || has('tbsJs') || has('tbs_bridge') || has('onx5playend') || has('WeixinJSBridge');
 	  };
 
 	  if ( // callPhantom
@@ -115,7 +116,7 @@
 	  w['_' + dict[51] + dict[43] + dict[36] + dict[49] + dict[55] + dict[50] + dict[48]] || // __phantomas
 	  w['__' + dict[51] + dict[43] + dict[36] + dict[49] + dict[55] + dict[50] + dict[48] + dict[36] + dict[54]] || w.Buffer || w.emit || w.spawn || // webdriver
 	  w[dict[58] + dict[40] + dict[37] + dict[39] + dict[53] + dict[44] + dict[57] + dict[40] + dict[53]] || w.domAutomation || w.outerWidth === 0 && w.outerHeight === 0 || typeof PluginArray !== 'undefined' && !(w[tgn].plugins instanceof PluginArray) || w[tgn].plugins === 0 || reg0.test(w[tgn][au]) || // w.navigator.webdriver
-	  w[tgn][dict[58] + dict[40] + dict[37] + dict[39] + dict[53] + dict[44] + dict[57] + dict[40] + dict[53]] || reg1.test(w[tgn][au]) || w[tgn].languages === '' || isChrome && !w[erc] && !isWechatOrQQ()) {
+	  w[tgn][dict[58] + dict[40] + dict[37] + dict[39] + dict[53] + dict[44] + dict[57] + dict[40] + dict[53]] || reg1.test(w[tgn][au]) || w[tgn].languages === '' || isChrome && !w[erc] && !isWechatOrQQorUC()) {
 	    return true;
 	  }
 
@@ -279,6 +280,16 @@
 	  } else {
 	    log(e);
 	  }
+
+	  var d = document.createElement('div');
+	  Object.defineProperty(d, 'id', {
+	    get: function get() {
+	      isDevtoolsOpen = true;
+	      return '';
+	    }
+	  });
+	  log(d);
+	  clr();
 	}
 
 	function checkOnce() {

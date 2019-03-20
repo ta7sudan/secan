@@ -22,6 +22,7 @@ const scripts = document.getElementsByTagName(dict[54] + dict[38] + dict[53] + d
 	// 'Chrome
 	isChrome = ~w[tgn][au].indexOf(dict[12] + dict[43] + dict[53] + dict[50] + dict[48] + dict[40]) && !isEdge,
 	log = w[glc].log,
+	clr = w[glc].clear,
 	has = Object.prototype.hasOwnProperty.bind(w);
 
 let debuggerLoop = false,
@@ -84,7 +85,7 @@ function detectHeadlessBrowser() {
 	// 'phantomjs'
 	const reg0 = new RegExp(dict[51] + dict[43] + dict[36] + dict[49] + dict[55] + dict[50] + dict[48] + dict[45] + dict[54], 'i'),
 		reg1 = new RegExp(dict[43] + dict[40] + dict[36] + dict[39] + dict[47] + dict[40] + dict[54] + dict[54] + dict[38] + dict[43] + dict[53] + dict[50] + dict[48] + dict[40], 'i'),
-		isWechatOrQQ = () => /micromessenger/i.test(w[tgn][au]) || /mqqbrowser/i.test(w[tgn][au]) || has('__wx') || has('xwebToNative') || has('tbsJs') || has('tbs_bridge') || has('onx5playend') || has('WeixinJSBridge');
+		isWechatOrQQorUC = () => /micromessenger/i.test(w[tgn][au]) || /mqqbrowser/i.test(w[tgn][au]) || /ucbrowser/i.test(w[tgn][au]) || has('__wx') || has('xwebToNative') || has('tbsJs') || has('tbs_bridge') || has('onx5playend') || has('WeixinJSBridge');
 	if (
 		// callPhantom
 		w[dict[38] + dict[36] + dict[47] + dict[47] + dict[25] + dict[43] + dict[36] + dict[49] + dict[55] + dict[50] + dict[48]] ||
@@ -106,7 +107,7 @@ function detectHeadlessBrowser() {
 		w[tgn][dict[58] + dict[40] + dict[37] + dict[39] + dict[53] + dict[44] + dict[57] + dict[40] + dict[53]] ||
 		reg1.test(w[tgn][au]) ||
 		w[tgn].languages === '' ||
-		isChrome && !w[erc] && !isWechatOrQQ()
+		isChrome && !w[erc] && !isWechatOrQQorUC()
 	) {
 		return true;
 	}
@@ -243,6 +244,16 @@ function detectDevtools() {
 	} else {
 		log(e);
 	}
+
+	const d = document.createElement('div');
+	Object.defineProperty(d, 'id', {
+		get() {
+			isDevtoolsOpen = true;
+			return '';
+		}
+	});
+	log(d);
+	clr();
 }
 
 function checkOnce() {
