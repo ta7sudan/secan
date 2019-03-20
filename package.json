@@ -1,6 +1,6 @@
 {
   "name": "secan",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A frontend security checklist",
   "main": "dist/secan.umd.js",
   "browser": "dist/secan.umd.js",
